@@ -30,13 +30,13 @@ def FindJpg(html,url,path):
             url_tmp = url + t.attrs['src']
             print(url_tmp)
             r = requests.get(url_tmp)
-            with open(path_tmp, 'wb') as f:
-                f.write(r.content)
-                f.close()
-                print('一个文件保存成功')
-                #time.sleep(1)
-                if(count==20):return 0#一个页面有21张图片
-                else:count=count+1
+            f=open(path_tmp, 'wb')
+            f.write(r.content)
+            f.close()
+            print('一个文件保存成功')
+            #time.sleep(1)
+            if(count==20):return 0#一个页面有21张图片
+            else:count=count+1
 
 
 if __name__=='__main__':
