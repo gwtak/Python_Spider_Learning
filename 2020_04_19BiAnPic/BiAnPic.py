@@ -20,13 +20,14 @@ def CreateDirectory(path):
         os.mkdir(path)
         print('文件夹创建成功')
 
+
 def FindJpg(html,url,path):
     soup=bs4.BeautifulSoup(html,'html.parser')
     count=0
     for t in soup.find_all('img'):
         if(isinstance(t,bs4.element.Tag)and('src' in t.attrs)):
             path_tmp = path + t.attrs['alt'] + '.jpg'
-            url_tmp = 'http://pic.netbian.com/' + t.attrs['src']
+            url_tmp = url + t.attrs['src']
             print(url_tmp)
             r = requests.get(url_tmp)
             with open(path_tmp, 'wb') as f:
@@ -42,10 +43,10 @@ if __name__=='__main__':
     url='http://pic.netbian.com'
     end_1='/index_'
     end_2='.html'
-    path='pics//'
+    path='pics/'
     CreateDirectory(path)
     html = GetHtml(url)
     FindJpg(html, url, path)
     for i in range(2,3):#页数
         html=GetHtml(url+end_1+str(i)+end_2)
-        FindJpg(html,url+end_1+str(i)+end_2,path)
+        FindJpg(html,url,path)
