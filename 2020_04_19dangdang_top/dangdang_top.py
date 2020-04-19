@@ -2,7 +2,6 @@
 import bs4
 import requests
 
-
 def GetHtmlText(url):
     try:
         response=requests.get(url)
@@ -20,14 +19,13 @@ def FillList(book,html):
 
 def PrintList(book,num):
     for i in range(num):
-        print(book[i])
+        print(i+1,book[i])
+
 
 if __name__=='__main__':
-    writer=[]
-    price=[]
+    book = []
     url='http://bang.dangdang.com/books/bestsellers/1-'
-    for i in range(1,5):
-        book = []
+    for i in range(1,6):
         html=GetHtmlText(url+str(i))
         FillList(book,html)
-        PrintList(book,20)
+    PrintList(book, 100)
