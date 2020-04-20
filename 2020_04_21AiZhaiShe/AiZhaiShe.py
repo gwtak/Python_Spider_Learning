@@ -1,8 +1,11 @@
-#爬取速度慢，待优化
+#爬取爱宅社首页多套套图
+#爬取爱宅社首页指定套图
+#下载速度有时会很慢，怀疑被检测，待优化
 import requests
 import bs4
 import re
 import os
+import time
 
 def GetHtml(url):
     try:
@@ -70,6 +73,7 @@ def DownloadJpg(url,path,num):
             f.write(r.content)
             f.close()
         print('一张图片已保存')
+        time.sleep(0.5)#可删除，防止干扰服务器运行被发现
     except:
         return
 
@@ -103,5 +107,3 @@ if __name__=='__main__':
                 i = i + 1
             m=int(m)-1
         JumpToJpgPage(url + JpgUrlList[i], path)
-
-
