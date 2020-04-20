@@ -1,3 +1,4 @@
+#爬取美图录首页图片
 import  requests
 import bs4
 import re
@@ -12,7 +13,14 @@ def GetHtml(url):
     except:
         return ""
 
-def FindJpg(html,JpgUrlList):
+def CreateDirectory(path):#创建文件夹
+    if(os.path.exists(path)):
+        print('文件夹已存在')
+    else:
+        os.mkdir(path)
+        print('文件夹创建成功')
+
+def FindJpg(html,JpgUrlList):#查找封面
     soup=bs4.BeautifulSoup(html,'html.parser')
     for t in soup.find_all('a'):
         if isinstance(t,bs4.element.Tag):
@@ -27,10 +35,17 @@ def DeleteRepetition(JpgUrlList):#重复链接置None
             JpgUrlList[i+1]=None
 
 def JumpToJpgPage(url):
-
+    html=GetHtml(url)
+    soup=bs4.BeautifulSoup(html,'html.parser')
+    path='pics/'
+    for t in soup.find_all('title'):
+        if isinstance(t,bs4.element.Tag):
+            path=path+t.string
+            CreateDirectory(path)
+    DownloadJpg(url,path)
 
 def DownloadJpg(url,path):
-
+    
 
 if __name__=='__main__':
     #print('爬取主页几套图片:(<=36)')
@@ -44,6 +59,4 @@ if __name__=='__main__':
     for count in range(n):
         while(JpgUrlList[i]==None):
             i=i+1
-        path=JumpToJpgPage(JpgUrlList[i])
-        CreateDirectory(path)
-        DownloadJpg(url,path)
+        JumpToJpgPage(JpgUrlList[i])

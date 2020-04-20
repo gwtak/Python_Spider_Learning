@@ -40,7 +40,7 @@ def DownJpg(url,html,path):#下载清晰图片(非封面)
             if(('alt' in t.attrs)and('data-pic' in t.attrs)and('src' in t.attrs)and('title' in t.attrs)):
                 #print(t)
                 r=requests.get(url+t.attrs['src'])
-                with open(path+t.attrs['alt']+'.jpg','wb') as f
+                with open(path+t.attrs['alt']+'.jpg','wb') as f:
                     f.write(r.content)
                     f.close()
                 print('一个文件保存成功')
