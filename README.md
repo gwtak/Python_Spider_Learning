@@ -7,4 +7,6 @@ python爬虫学习记录
 
 [2020_04_19当当网当日图书畅销榜](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_19dangdang_top)
 
-[2020_04_20爬取美图录美女图片](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_20MeiTuLuPic)
+[2020_04_20爬取美图录妹子图片](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_20MeiTuLuPic)
+
+[2020_04_21爬取爱宅社首页美女图片](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_21AiZhaiShe)
