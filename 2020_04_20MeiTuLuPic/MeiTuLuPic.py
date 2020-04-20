@@ -1,5 +1,6 @@
 #爬取美图录首页多套图片
 #爬取美图录首页指定套图
+#爬取美图录图库指定套图
 import requests
 import bs4
 import re
