@@ -1,5 +1,6 @@
 #爬取爱宅社首页多套套图
 #爬取爱宅社首页指定套图
+#爬取指定网页套图
 #下载速度有时会很慢，怀疑被检测，待优化
 import requests
 import bs4
@@ -73,7 +74,7 @@ def DownloadJpg(url,path,num):
             f.write(r.content)
             f.close()
         print('一张图片已保存')
-        time.sleep(0.5)#可删除，防止干扰服务器运行被发现
+        #time.sleep(0.5)#防止干扰服务器运行被发现
     except:
         return
 
@@ -86,6 +87,7 @@ if __name__=='__main__':
     DeleteRepetiton(JpgUrlList)
     print('输入‘1’：爬取首页多套图片')
     print('输入‘2’：爬取首页指定套图')
+    print('输入‘3’：爬取指定网页套图')
     n=input()
     if(n=='1'):
         print('输入套图数量')
@@ -107,3 +109,7 @@ if __name__=='__main__':
                 i = i + 1
             m=int(m)-1
         JumpToJpgPage(url + JpgUrlList[i], path)
+    elif(n=='3'):
+        print('输入网址')
+        url=input()
+        JumpToJpgPage(url,path)
