@@ -11,4 +11,4 @@ python爬虫学习记录
 
 [2020_04_21爱宅社首页美女图片](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_21AiZhaiShe)
 
-[2020_04_22水蜜桃首页美女图片（施工中）](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_22ShuiMiTao)
+[2020_04_22水蜜桃首页美女图片（懒得写了）](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_04_22ShuiMiTao)
