@@ -9,8 +9,11 @@ import os
 import time
 
 def GetHtml(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+        "Referer": "https://www.baidu.com/"}
     try:
-        response=requests.get(url)
+        response=requests.get(url,headers=headers)
         response.raise_for_status()
         response.encoding=response.apparent_encoding
         return response.text
@@ -41,6 +44,7 @@ def DeleteRepetiton(JpgUrlList):
             JpgUrlList[i+1]=None
 
 def JumpToJpgPage(url,path):
+    print(url)
     CreateDirectory(path)
     html=GetHtml(url)
     soup=bs4.BeautifulSoup(html,'html.parser')
