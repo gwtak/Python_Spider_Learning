@@ -1,4 +1,6 @@
+#javbus首页多套av封面和预览图
 #javbus首页指定av封面和预览图
+#javbus指定页面av封面和预览图
 #使用ajax加载磁力链接
 #分析ajax获取磁力链接
 import bs4
@@ -32,14 +34,41 @@ def FindUrl(html,list,url):
                     list.append(t.attrs['href'])
 
 
-def SelectPage(list,path):
-    print('请输入要爬取的序号')
-    num=input()
-    if(int(num)==-1):
-        for i in range(len(list)):
+def Select(path):
+    print('输入‘1’，爬取首页多套项目')
+    print('输入‘2’，爬取首页指定项目')
+    print('输入‘3’，爬取指定网页项目')
+    c=input()
+    list = []
+    url='https://www.javbus.icu/'#javbus网址
+    if(c=='1'):
+        print('请输入要爬取的项目数量<=30')
+        num=input()
+        html=GetHtml(url)
+        FindUrl(html,list,url)
+        for i in range(int(num)):
             DoWork(list[i],path)
-    else:
-        DoWork(list[int(num)],path)
+    elif((c=='2')):
+        print('请输入要爬取的序号>0')
+        num = input()
+        if(int(num)>30):
+            page=int(int(num)/30)+1
+            num=int(num)%30
+            #print(n)
+            page_url='https://www.javbus.icu/page/'+str(page)
+            html = GetHtml(page_url)
+            FindUrl(html, list, url)
+            #print(len(list))
+            DoWork(list[int(num)-1], path)
+        else:
+            html = GetHtml(url)
+            FindUrl(html, list, url)
+            DoWork(list[int(num) - 1], path)
+    elif(c=='3'):
+        print('请输入要爬取的网页')
+        input_url=input()
+        DoWork(input_url,path)
+
 
 def DoWork(url,path):
     html=GetHtml(url)
@@ -83,9 +112,5 @@ def DownloadJpg(url,path):
 
 if __name__=='__main__':
     path='index/'
-    list=[]
-    url='https://www.javbus.icu/'
-    html=GetHtml(url)
-    FindUrl(html,list,url)
     CreateDirectory(path)
-    SelectPage(list,path)
+    n=Select(path)
