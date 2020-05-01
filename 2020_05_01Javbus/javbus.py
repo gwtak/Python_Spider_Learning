@@ -52,7 +52,7 @@ def Select(path):
         print('请输入要爬取的序号>0')
         num = input()
         if(int(num)>30):
-            page=int(int(num)/30)+1
+            page=int((int(num)-1)/30)+1
             num=int(num)%30
             #print(n)
             page_url='https://www.javbus.icu/page/'+str(page)
