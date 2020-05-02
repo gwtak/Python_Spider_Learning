@@ -16,8 +16,12 @@ def CreateDirectory(path):
         print('文件夹创建成功')
 
 def GetHtml(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
+        "Referer": "https://www.baidu.com/"
+    }
     try:
-        response=requests.get(url)
+        response=requests.get(url,headers=headers)
         response.raise_for_status()
         response.encoding=response.apparent_encoding
         return response.text
@@ -47,7 +51,7 @@ def Select(path):
         html=GetHtml(url)
         FindUrl(html,list,url)
         for i in range(int(num)):
-            DoWork(list[i],path)
+            Search(list[i],path)
     elif((c=='2')):
         print('请输入要爬取的序号>0')
         num = input()
@@ -59,32 +63,25 @@ def Select(path):
             html = GetHtml(page_url)
             FindUrl(html, list, url)
             #print(len(list))
-            DoWork(list[int(num)-1], path)
+            Search(list[int(num)-1], path)
         else:
             html = GetHtml(url)
             FindUrl(html, list, url)
-            DoWork(list[int(num) - 1], path)
+            Search(list[int(num) - 1], path)
     elif(c=='3'):
         print('请输入要爬取的网页')
         input_url=input()
-        DoWork(input_url,path)
-
-
-def DoWork(url,path):
-    html=GetHtml(url)
-    soup=bs4.BeautifulSoup(html,'html.parser')
-    for t in soup.find_all('title'):
-        if isinstance(t,bs4.element.Tag):
-            print(t.text)
-            path=path+t.text+'/'
-            CreateDirectory(path)
-    Search(url,path)
-
+        Search(input_url,path)
 
 def Search(url,path):
     print(url)
     html = GetHtml(url)
     soup = bs4.BeautifulSoup(html, 'html.parser')
+    for t in soup.find_all('title'):
+        if isinstance(t,bs4.element.Tag):
+            print(t.text)
+            path=path+t.text+'/'
+            CreateDirectory(path)
     for t in soup.find_all('img'):
         if isinstance(t,bs4.element.Tag):
             if('src' in t.attrs):

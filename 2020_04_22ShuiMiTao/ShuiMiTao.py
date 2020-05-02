@@ -2,7 +2,7 @@
 #爬取水蜜桃首页指定套图
 #爬取水蜜桃图库指定套图
 #原网页https://smtmm.win/#/?page=1
-#使用Ajax,laxy load
+#使用Ajax,lazy load
 #仅在首页进行JS渲染
 #障眼法，不输入‘#’
 #直接输入https://smtmm.win/?page=1
