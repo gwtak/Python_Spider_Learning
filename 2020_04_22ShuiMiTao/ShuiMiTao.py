@@ -98,7 +98,6 @@ def Select(path):
             while(list[count]==None):
                 count=count+1
             JumpToJpgPage(url+list[count],path)
-            i=i+1
     elif(c=='2'):
         print('输入套图序号')
         num = input()
@@ -112,7 +111,7 @@ def Select(path):
             count = count + 1
             while (list[count] == None):
                 count = count + 1
-            JumpToJpgPage(url + list[count], path)
+        JumpToJpgPage(url + list[count], path)
 
     elif(c=='3'):
         print('输入套图网页')
