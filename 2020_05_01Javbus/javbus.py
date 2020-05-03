@@ -17,7 +17,7 @@ def CreateDirectory(path):
 
 def GetHtml(url):
     try:
-        response=requests.get(url,headers=headers)
+        response=requests.get(url)
         response.raise_for_status()
         response.encoding=response.apparent_encoding
         return response.text
@@ -62,6 +62,7 @@ def Select(path):
             Search(list[int(num)-1], path)
         else:
             html = GetHtml(url)
+            print(html)
             FindUrl(html, list, url)
             Search(list[int(num) - 1], path)
     elif(c=='3'):
