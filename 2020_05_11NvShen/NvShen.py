@@ -92,7 +92,7 @@ if __name__=='__main__':
         i=1
         name=0
         while(1):
-            jpg_list = jpg_page.FindUrl('img','src',r'https://t1\.onvshen\.com:85/\S*\.jpg')
+            jpg_list = jpg_page.FindUrl('img','src',r'https://(t1|img)\.onvshen\.com:85/\S*\.jpg')
             for t in jpg_list:
                 time.sleep(1)#下载速度实在是太快了，节制一点
                 DownloadJpg(t,path,name)
@@ -111,7 +111,7 @@ if __name__=='__main__':
         i = 1
         name = 0
         while (1):
-            jpg_list = jpg_page.FindUrl('img', 'src', r'https://t1\.onvshen\.com:85/\S*\.jpg')
+            jpg_list = jpg_page.FindUrl('img', 'src', r'https://(t1|img)\.onvshen\.com:85/\S*\.jpg')
             for t in jpg_list:
                 time.sleep(1)  # 下载速度实在是太快了，节制一点
                 DownloadJpg(t, path, name)
