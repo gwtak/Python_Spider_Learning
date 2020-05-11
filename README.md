@@ -15,3 +15,5 @@
 
 [2020_05_01JAVBUS首页封面、预览图](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_05_01Javbus)
 
+[2020_05_11宅男女神(类的初体验)](https://github.com/gwtak/Python_Spider_Learning/tree/master/2020_05_09NvShen)
+
